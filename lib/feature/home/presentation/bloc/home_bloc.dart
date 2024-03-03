@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import '../../../../configs/routes/global_key.dart';
 import '../../../../configs/routes/route.dart';
 import '../../domain/repository/home_repo.dart';
@@ -26,6 +28,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           emit(HomeLoadedState(homeDataModel: data, itemCount: i));
           await Future.delayed(const Duration(seconds: 5));
         }
+        showToast('Data fetched succesfully');
       } else {
         ScaffoldMessenger.of(event.context).showSnackBar(
           const SnackBar(
@@ -40,3 +43,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 }
 
+void showToast(String message) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.TOP,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.grey,
+    textColor: Colors.white,
+    fontSize: 18,
+  );
+}

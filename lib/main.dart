@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: ((context) => CopyCubit())),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: generateRoute,
         navigatorKey: gNavigatorKey,
