@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kamyogya_intern_task/core/constants/constants.dart';
+import 'package:kamyogya_intern_task/feature/home/presentation/bloc/cubit/copy_cubit.dart';
 
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
@@ -17,15 +20,50 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Center _mainSection(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-          onPressed: () {
-            context.read<HomeBloc>().add(GetHomeData(
-                apiUrl:
-                    'https://rotarydistrict3292.org.np/api/club/member/search'));
-          },
-          child: Text('send ')),
+  Column _mainSection(BuildContext context) {
+    TextEditingController endpointcontroller =
+        TextEditingController(text: Constants().apiEndpoint);
+    TextEditingController userinputcontroller = TextEditingController();
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 370,
+              child: TextField(
+                maxLines: 3,
+                controller: endpointcontroller,
+                readOnly: true,
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  context.read<CopyCubit>().copy(endpointcontroller.text);
+                  print('PRESSED');
+                },
+                child: const Text('copy'))
+          ],
+        ),
+
+        //the field where the api endpoint should be pasted
+        Container(
+          width: 500,
+          margin: const EdgeInsets.only(top: 50, left: 10, right: 10),
+          child: TextFormField(
+            controller: userinputcontroller,
+            decoration: const InputDecoration(labelText: 'paste the url here'),
+          ),
+        ),
+        Center(
+          child: ElevatedButton(
+              onPressed: () {
+                context.read<HomeBloc>().add(GetHomeData(context,
+                    apiUrl: userinputcontroller.text.toString()));
+              },
+              child: const Text('send ')),
+        ),
+      ],
     );
   }
 }

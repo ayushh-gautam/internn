@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import '../../../../configs/routes/global_key.dart';
 import '../../../../configs/routes/route.dart';
 import '../../domain/repository/home_repo.dart';
@@ -23,13 +24,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         // emit(HomeLoadedState(homeDataModel: data, itemCount: 1));
         for (var i = 0; i < 4; i++) {
           emit(HomeLoadedState(homeDataModel: data, itemCount: i));
-          await Future.delayed(const Duration(seconds: 3));
+          await Future.delayed(const Duration(seconds: 5));
         }
       } else {
-        emit(HomeLoadingState());
+        ScaffoldMessenger.of(event.context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to fetch data.'),
+          ),
+        );
+        emit(HomeErrorState());
       }
     } catch (e) {
       emit(HomeLoadingState());
     }
   }
 }
+

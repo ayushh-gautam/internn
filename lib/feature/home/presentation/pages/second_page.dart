@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/app_color.dart';
 import '../../data/model/home_data_model.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
-
 
 class SecondScreen extends StatelessWidget {
   SecondScreen({super.key});
@@ -33,14 +31,36 @@ class SecondScreen extends StatelessWidget {
     return ListView.builder(
       itemCount: itemCount,
       itemBuilder: (BuildContext context, int index) {
-        // Future.delayed(Duration(seconds: 30)).;
-        return ListTile(
-          title: Text(
-            homeMembersData?[index].name ?? '',
-            style: TextStyle(color: AppColor.black),
+        Future.delayed(const Duration(seconds: 3));
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: const EdgeInsets.all(15),
+          height: 120,
+          decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(30)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ClipRect(
+                child: Image.network(homeMembersData?[index].image ?? ''),
+              ),
+              Column(
+                children: [Text(homeMembersData?[index].name ?? '')],
+              ),
+         
+            ],
           ),
         );
+
+        //ListTile(
+        //   title: Text(
+        //     homeMembersData?[index].name ?? '',
+        //     style: const TextStyle(color: AppColor.black),
+        //   ),
+        // );
       },
     );
   }
 }
+//TODO:: clean ui
