@@ -34,21 +34,26 @@ class SecondScreen extends StatelessWidget {
         Future.delayed(const Duration(seconds: 3));
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.only(top: 20, left: 40),
           height: 120,
           decoration: BoxDecoration(
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(30)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRect(
-                child: Image.network(homeMembersData?[index].image ?? ''),
+              Text(
+                "Name: " "${homeMembersData?[index].name ?? ''}",
+                style: TextStyle(fontSize: 18),
               ),
-              Column(
-                children: [Text(homeMembersData?[index].name ?? '')],
+              Text(
+                "Club:" "${homeMembersData?[index].club ?? ''}",
+                style: TextStyle(fontSize: 18),
               ),
-         
+              Text(
+                "Email:" "${homeMembersData?[index].email ?? "xyz@gmail.com"}",
+                style: TextStyle(fontSize: 17),
+              ),
             ],
           ),
         );

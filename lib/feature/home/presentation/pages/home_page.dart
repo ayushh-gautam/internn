@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kamyogya_intern_task/core/constants/constants.dart';
 import 'package:kamyogya_intern_task/feature/home/presentation/bloc/cubit/copy_cubit.dart';
-
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +16,6 @@ class HomePage extends StatelessWidget {
       body: _mainSection(context),
     );
   }
-
   Column _mainSection(BuildContext context) {
     TextEditingController endpointcontroller =
         TextEditingController(text: Constants().apiEndpoint);
@@ -30,7 +26,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 370,
+              width: 280,
               child: TextField(
                 maxLines: 3,
                 controller: endpointcontroller,
@@ -40,7 +36,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   context.read<CopyCubit>().copy(endpointcontroller.text);
-                  print('PRESSED');
+                 // print('PRESSED');
                 },
                 child: const Text('copy'))
           ],
@@ -61,7 +57,7 @@ class HomePage extends StatelessWidget {
                 context.read<HomeBloc>().add(GetHomeData(context,
                     apiUrl: userinputcontroller.text.toString()));
               },
-              child: const Text('send ')),
+              child: const Text('Fetch Data')),
         ),
       ],
     );

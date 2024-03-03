@@ -46,9 +46,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 void showToast(String message) {
   Fluttertoast.showToast(
     msg: message,
-    toastLength: Toast.LENGTH_SHORT,
+    toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.TOP,
-    timeInSecForIosWeb: 1,
+    timeInSecForIosWeb: 4,
     backgroundColor: Colors.grey,
     textColor: Colors.white,
     fontSize: 18,
