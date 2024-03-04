@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kamyogya_intern_task/notifications.dart';
 
 import '../../../../configs/routes/global_key.dart';
 import '../../../../configs/routes/route.dart';
@@ -28,7 +30,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           emit(HomeLoadedState(homeDataModel: data, itemCount: i));
           await Future.delayed(const Duration(seconds: 5));
         }
-        showToast('Data fetched succesfully');
+        GetNotifications.showNotification(
+            title: 'Ntification',
+            body: 'Data Fetched succesfully',
+            payload: 'Success');
       } else {
         ScaffoldMessenger.of(event.context).showSnackBar(
           const SnackBar(
@@ -43,14 +48,3 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 }
 
-void showToast(String message) {
-  Fluttertoast.showToast(
-    msg: message,
-    toastLength: Toast.LENGTH_LONG,
-    gravity: ToastGravity.TOP,
-    timeInSecForIosWeb: 4,
-    backgroundColor: Colors.grey,
-    textColor: Colors.white,
-    fontSize: 18,
-  );
-}

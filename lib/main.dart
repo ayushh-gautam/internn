@@ -9,6 +9,7 @@ import 'configs/routes/route_handler.dart';
 import 'configs/theme/app_theme.dart';
 
 Future<void> main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initializationDependencies();
   runApp(const MyApp());
 }
