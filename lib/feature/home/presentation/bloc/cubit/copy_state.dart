@@ -11,7 +11,7 @@ final class CopyInitial extends CopyState {}
 
 class CopiedToClipboard extends CopyState {
   final String copiedText;
-  CopiedToClipboard(String text, {required this.copiedText});
+  const CopiedToClipboard(String text, {required this.copiedText});
    @override
   List<Object> get props => [copiedText];
 }

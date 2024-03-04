@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
       body: _mainSection(context),
     );
   }
+
   Column _mainSection(BuildContext context) {
     TextEditingController endpointcontroller =
         TextEditingController(text: Constants().apiEndpoint);
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   context.read<CopyCubit>().copy(endpointcontroller.text);
-                 // print('PRESSED');
+                  // print('PRESSED');
                 },
                 child: const Text('copy'))
           ],
@@ -45,7 +46,8 @@ class HomePage extends StatelessWidget {
         //the field where the api endpoint should be pasted
         Container(
           width: 500,
-          margin: const EdgeInsets.only(top: 50, left: 10, right: 10),
+          margin:
+              const EdgeInsets.only(top: 50, left: 10, right: 10, bottom: 20),
           child: TextFormField(
             controller: userinputcontroller,
             decoration: const InputDecoration(labelText: 'paste the url here'),

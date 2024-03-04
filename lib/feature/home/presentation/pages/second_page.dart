@@ -44,15 +44,15 @@ class SecondScreen extends StatelessWidget {
             children: [
               Text(
                 "Name: " "${homeMembersData?[index].name ?? ''}",
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
               Text(
                 "Club:" "${homeMembersData?[index].club ?? ''}",
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
               Text(
                 "Email:" "${homeMembersData?[index].email ?? "xyz@gmail.com"}",
-                style: TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 17),
               ),
             ],
           ),

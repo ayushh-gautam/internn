@@ -15,7 +15,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case Routes.homePage:
       return _getPageRoute(
         routeName: settings.name!,
-        screen: HomePage(),
+        screen: const HomePage(),
       ); //
 
 
