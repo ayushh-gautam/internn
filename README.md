@@ -40,3 +40,4 @@ The project uses the following packages:
 - fluttertoast
 - equatable
 - get_it
+- flutter_local_notification
