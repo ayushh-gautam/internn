@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kamyogya_intern_task/notifications.dart';
 
 import '../../../../configs/routes/global_key.dart';
@@ -43,7 +41,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(HomeErrorState());
       }
     } catch (e) {
-      emit(HomeLoadingState());
+      emit(HomeErrorState());
     }
   }
 }
